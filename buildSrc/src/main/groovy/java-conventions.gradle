@@ -1,0 +1,7 @@
+plugins {
+    id 'application'
+}
+
+dependencies {
+    implementation files('$rootDir/lib/cs_pt.jar')
+}
