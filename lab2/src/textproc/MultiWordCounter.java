@@ -1,26 +1,24 @@
 package textproc;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MultiWordCounter implements TextProcessor {
-    private final String[] m_words;
-    private final int[] m_wordCounts;
+    private final Map<String, Integer> m_wordCount = new HashMap<>();
 
     MultiWordCounter(String[] words) {
-        m_words = words;
-        m_wordCounts = new int[words.length];
+        for (var w : words) {
+            m_wordCount.put(w, 0);
+        }
     }
 
     public void process(String w) {
-        for (int i = 0; i < m_words.length; ++i) {
-            if (w.equals(m_words[i])) {
-                ++m_wordCounts[i];
-                return;
-            }
-        }
+        m_wordCount.put(w, m_wordCount.get(w) + 1);
     }
 
     public void report() {
-        for (int i = 0; i < m_words.length; ++i) {
-            System.out.printf("%s: %d", m_words[i], m_wordCounts[i]);
-        }
+        m_wordCount.forEach(
+                (k, v) -> System.out.printf("%s: %d", k, v)
+        );
     }
 }
