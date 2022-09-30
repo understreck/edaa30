@@ -14,13 +14,14 @@ public class Holgersson {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        var ps = new ArrayList<SingleWordCounter>();
+        var ps = new ArrayList<TextProcessor>();
         ps.add(new SingleWordCounter("nils"));
         ps.add(new SingleWordCounter("norge"));
+        ps.add(new MultiWordCounter(REGIONS));
 
         Scanner s = new Scanner(new File("lab2/res/nilsholg.txt"));
         s.findWithinHorizon("\uFEFF", 1);
-        s.useDelimiter("(\\s|,|\\.|:|;|!|\\?|'|\\\")+"); // se handledning
+        s.useDelimiter("(\\s|,|\\.|:|;|!|\\?|'|\")+"); // se handledning
 
         while (s.hasNext()) {
             String word = s.next().toLowerCase();

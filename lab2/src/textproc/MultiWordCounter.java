@@ -13,12 +13,14 @@ public class MultiWordCounter implements TextProcessor {
     }
 
     public void process(String w) {
-        m_wordCount.put(w, m_wordCount.get(w) + 1);
+        if (m_wordCount.containsKey(w)) {
+            m_wordCount.put(w, m_wordCount.get(w) + 1);
+        }
     }
 
     public void report() {
         m_wordCount.forEach(
-                (k, v) -> System.out.printf("%s: %d", k, v)
+                (k, v) -> System.out.printf("%s: %d\n", k, v)
         );
     }
 }
