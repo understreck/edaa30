@@ -27,7 +27,12 @@ public class GeneralWordCounter implements TextProcessor {
         var wordSet = m_wordCount.entrySet();
         var wordList =
                 new ArrayList<>(wordSet);
-        wordList.sort((lhs, rhs) -> rhs.getValue() - lhs.getValue());
+        wordList.sort((lhs, rhs) -> {
+            var valDiff = rhs.getValue() - lhs.getValue();
+            if(valDiff != 0) return valDiff;
+
+            return rhs.getKey().compareTo(lhs.getKey());
+        });
         for(int i = 0; i < 5; ++i) {
             var element = wordList.get(i);
             System.out.printf("%s: %d\n", element.getKey(), element.getValue());
