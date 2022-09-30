@@ -1,4 +1,4 @@
-package lab1.game;
+package game;
 
 public class Board {
     private int m_nrPins = 0;

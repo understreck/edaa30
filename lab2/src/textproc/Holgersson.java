@@ -1,4 +1,4 @@
-package lab2.textproc;
+package textproc;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,7 +15,7 @@ public class Holgersson {
 
         TextProcessor p = new SingleWordCounter("nils");
 
-        Scanner s = new Scanner(new File("nilsholg.txt"));
+        Scanner s = new Scanner(new File("lab2/res/nilsholg.txt"));
         s.findWithinHorizon("\uFEFF", 1);
         s.useDelimiter("(\\s|,|\\.|:|;|!|\\?|'|\\\")+"); // se handledning
 

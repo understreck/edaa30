@@ -3,8 +3,8 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/lib" />
+      <sourceFolder url="file://$MODULE_DIR$/lab1/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lab2/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/banktest/src" />
       <excludeFolder url="file://$MODULE_DIR$/banktest" />
       <excludeFolder url="file://$MODULE_DIR$/exempel-modul-1-2" />
@@ -29,9 +29,11 @@
       <excludeFolder url="file://$MODULE_DIR$/lab4" />
       <excludeFolder url="file://$MODULE_DIR$/lab5" />
       <excludeFolder url="file://$MODULE_DIR$/lab6" />
+      <excludeFolder url="file://$MODULE_DIR$/lab2/res" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="cs_pt" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

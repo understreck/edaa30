@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="lab1" type="Application" factoryName="Application">
-    <option name="MAIN_CLASS_NAME" value="lab1.game.TakePinsGame" />
+    <option name="MAIN_CLASS_NAME" value="game.TakePinsGame" />
     <module name="edaa30" />
     <method v="2">
       <option name="Make" enabled="true" />

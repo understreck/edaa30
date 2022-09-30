@@ -1,4 +1,4 @@
-package lab2.lpt;
+package lpt;
 
 import java.util.ArrayList;
 import java.util.List;

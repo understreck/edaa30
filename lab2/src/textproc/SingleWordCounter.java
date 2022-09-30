@@ -1,4 +1,4 @@
-package lab2.textproc;
+package textproc;
 
 public class SingleWordCounter implements TextProcessor {
     private final String word;

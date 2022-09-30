@@ -1,4 +1,4 @@
-package lab2.lpt;
+package lpt;
 
 public class Job {
     private final String name;

@@ -1,4 +1,4 @@
-package lab1.game;
+package game;
 
 public class HumanPlayer extends Player {
     HumanPlayer(String name) {

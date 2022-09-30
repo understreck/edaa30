@@ -1,4 +1,4 @@
-package lab1.game;
+package game;
 
 class TakePinsGame {
     public static void main(String[] args) {
