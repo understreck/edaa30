@@ -40,10 +40,10 @@ public class Holgersson {
 
         s.close();
         for (var p : ps) {
-//            long t0 = System.nanoTime();
+            long t0 = System.nanoTime();
             p.report();
-//            long t1 = System.nanoTime();
-//            System.out.println("tid: " + (t1 - t0) / 1000000.0 + " ms");
+            long t1 = System.nanoTime();
+            System.out.println("tid: " + (t1 - t0) / 1000000.0 + " ms");
         }
     }
 }

@@ -1,12 +1,12 @@
 package textproc;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 public class GeneralWordCounter implements TextProcessor {
-    private final Map<String, Integer> m_wordCount = new HashMap<>();
+    private final Map<String, Integer> m_wordCount = new TreeMap<>();
     private final Set<String> m_forbiddenWords;
 
     GeneralWordCounter(Set<String> forbiddenWords) {
