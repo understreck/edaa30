@@ -1,9 +1,8 @@
 package textproc;
 
+import javax.swing.*;
 import java.util.Comparator;
 import java.util.List;
-
-import javax.swing.AbstractListModel;
 
 public class SortedListModel<E> extends AbstractListModel<E> {
 	private List<E> list;
