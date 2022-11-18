@@ -1,7 +1,8 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="lab1" type="Application" factoryName="Application">
+    <option name="ALTERNATIVE_JRE_PATH" value="18" />
     <option name="MAIN_CLASS_NAME" value="game.TakePinsGame" />
-    <module name="edaa30" />
+    <module name="lab1" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
