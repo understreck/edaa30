@@ -1,4 +1,4 @@
-package mountain;
+package main.java.edaa30.mountain;
 
 public class RandomUtilities {
 	public static double randFunc(double dev) {

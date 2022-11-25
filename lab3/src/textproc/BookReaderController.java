@@ -37,7 +37,7 @@ public class BookReaderController {
 
         var b2 = new JButton("Frequency");
         b2.addActionListener(event -> listModel.sort(
-                (lhs, rhs) -> lhs.getValue() - rhs.getValue()
+                (lhs, rhs) -> rhs.getValue() - lhs.getValue()
         ));
         panel.add(b2);
 

@@ -1,4 +1,4 @@
-package fractal;
+package main.java.edaa30.fractal;
 import java.awt.Graphics;
 
 public class TurtleGraphics {

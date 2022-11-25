@@ -49,7 +49,7 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	 * 			if this queue is empty
 	 */
 	public E peek() {
-		if(size == 0) return null;
+		if(last == null) return null;
 		return last.next.element;
 	}
 

@@ -1,4 +1,4 @@
-package mountain;
+package main.java.edaa30.mountain;
 
 public class Point {
 	private int x, y;

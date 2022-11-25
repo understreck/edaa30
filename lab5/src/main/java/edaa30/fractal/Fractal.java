@@ -1,4 +1,4 @@
-package fractal;
+package main.java.edaa30.fractal;
 public abstract class Fractal {
 	protected int order;
 
