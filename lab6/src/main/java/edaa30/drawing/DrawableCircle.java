@@ -1,4 +1,4 @@
-package drawing;
+package main.java.edaa30.drawing;
 
 import java.awt.Color;
 import java.awt.Graphics;

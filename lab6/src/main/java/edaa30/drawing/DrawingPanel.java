@@ -1,4 +1,4 @@
-package drawing;
+package main.java.edaa30.drawing;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;

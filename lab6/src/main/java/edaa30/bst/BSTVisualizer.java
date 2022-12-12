@@ -1,9 +1,9 @@
-package bst;
+package main.java.edaa30.bst;
 
-import java.awt.Color;
+import main.java.edaa30.bst.BinarySearchTree.BinaryNode;
+import main.java.edaa30.drawing.DrawingArea;
 
-import bst.BinarySearchTree.BinaryNode;
-import drawing.*;
+import java.awt.*;
 
 public class BSTVisualizer {
 	private DrawingArea canvas;
@@ -18,7 +18,6 @@ public class BSTVisualizer {
 	private final static int VERTICAL_DIST = 10;
 	// distance between node (circle) center and content string
 	private final static int OFFSET = -10;
-
 	/**
 	 * Creates a canvas with a certain title, width, height.
 	 */
@@ -30,7 +29,7 @@ public class BSTVisualizer {
 	 * Draws a binary search tree on the canvas.
 	 */
 	public void drawTree(BinarySearchTree<?> bst) {
-		if (bst.root != null) {
+		if (bst.m_root != null) {
 			canvas.erase();
 			VNode root = buildVTree(bst);
 			calculateWidth(root);
@@ -52,7 +51,7 @@ public class BSTVisualizer {
 	}
 
 	private VNode buildVTree(BinarySearchTree<?> bst) {
-		VNode root = new VNode(bst.root);
+		VNode root = new VNode(bst.m_root);
 		buildVTree(root);
 		return root;
 	}
