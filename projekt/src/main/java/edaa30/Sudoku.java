@@ -7,7 +7,7 @@ public final class Sudoku implements SudokuSolver {
     private int[][] m_board = new int[ROWS][COLUMNS]; //collumn major (x, y)
 
     /**
-     * Solves the sudoku loaded
+     * Solves the loaded sudoku
      * @return True if the sudoku could be solved
      */
     @Override
@@ -44,6 +44,7 @@ public final class Sudoku implements SudokuSolver {
     }
 
     /**
+     * Check if placing digit in square row, col is legal
      * @param digit The digit to insert in square row, col
      * @param row   The row
      * @param col   The column
@@ -119,7 +120,7 @@ public final class Sudoku implements SudokuSolver {
     }
 
     /**
-     * Puts digit in the box row, col.
+     * Puts digit in the square row, col
      *
      * @param row   The row
      * @param col   The column
@@ -137,7 +138,7 @@ public final class Sudoku implements SudokuSolver {
     }
 
     /**
-     * Removes the digit in the box row, col.
+     * Removes the digit in the square row, col.
      *
      * @param row The row
      * @param col The column
@@ -158,11 +159,11 @@ public final class Sudoku implements SudokuSolver {
     }
 
     /**
-     * Fills the grid with the digits in m. The digit 0 represents an empty box.
-     *
+     * Sets internal matrix to argument if no element is out of bounds
+     * and it has the correct 9 * 9 dimensions
      * @param matrix the matrix with the digits to insert
-     * @throws IllegalArgumentException if m has the wrong dimension or contains
-     *                                  values outside the range [0..9]
+     * @throws IllegalArgumentException if matrix has the wrong dimension or
+     *                                  contains values outside the range [0..9]
      */
     @Override
     public void setMatrix(int[][] matrix) throws IllegalArgumentException {
@@ -171,7 +172,7 @@ public final class Sudoku implements SudokuSolver {
     }
 
     /**
-     * Returns a matrix with the current values.
+     * Returns the inner representation of the loaded sudoku
      *
      * @return integer matrix with current values
      */
@@ -180,6 +181,7 @@ public final class Sudoku implements SudokuSolver {
         return m_board;
     }
 
+    @Override
     public String toString() {
         var sb = new StringBuilder();
         for(int i = 0; i < ROWS; ++i) {
