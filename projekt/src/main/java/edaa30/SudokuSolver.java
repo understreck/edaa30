@@ -3,7 +3,16 @@ package main.java.edaa30;
 public interface SudokuSolver{
 
     boolean solve();
-    boolean legal(int digit, int row, int col);
+
+    /**
+     * @param row   The row
+     * @param col   The column
+     * @param digit The digit to insert in box row, col
+     * @throws IllegalArgumentException if row, col or digit is outside the range
+     *                                  [0..9]
+     */
+    boolean legal(int digit, int row, int col) throws IllegalArgumentException;
+
     /**
      * Puts digit in the box row, col.
      *

@@ -7,71 +7,18 @@ public final class Sudoku implements SudokuSolver {
     private int[][] m_board = new int[ROWS][COLUMNS]; //collumn major (x, y)
 
     /**
-     * Set a single element on the board
-     *
-     * @param x     1 - 9, left is 1
-     * @param y     1 - 9, top is 1
-     * @param value 1 - 9, 0 for empty
-     * @throws IllegalArgumentException
+     * Solves the sudoku loaded
+     * @return True if the sudoku could be solved
      */
-    public void set_element(int x, int y, int value) throws IllegalArgumentException {
-        if (x < 1 || x > COLUMNS) throw new IllegalArgumentException(
-                String.format("Argument 'int x = %d' is out of bounds.", x));
-        if (y < 1 || y > ROWS) throw new IllegalArgumentException(
-                String.format("Argument 'int y = %d' is out of bounds.", y));
-        if (value < 0 || value > 9) throw new IllegalArgumentException(
-                String.format("Argument 'int value = %d' is out of bounds.", value));
-
-        m_board[y - 1][x - 1] = value;
-    }
-
-    /**
-     * Set an entire row
-     *
-     * @param index  1 - 9, left is 1
-     * @param column has to be 9 long
-     * @throws IllegalArgumentException
-     */
-    public void set_column(int index, int[] column) throws IllegalArgumentException {
-        if (index < 1 || index > COLUMNS) throw new IllegalArgumentException(
-                String.format("Argument 'int index = %d' is out of bounds.", index));
-        if (column == null) throw new IllegalArgumentException("Argument 'int[] column' is null.");
-        if (column.length != COLUMNS) throw new IllegalArgumentException(
-                String.format("Argument 'int[] column : column.length = %d' is not the correct length.", column.length));
-
-        for (int row = 0; row < COLUMNS; ++row) {
-            set_element(index, row, column[row]);
-        }
-    }
-
-    /**
-     * Set an entire column
-     *
-     * @param index 1 - 9, top is 1
-     * @param row   has to be 9 long
-     * @throws IllegalArgumentException
-     */
-    public void set_row(int index, int[] row) throws IllegalArgumentException {
-        if (index < 1 || index > COLUMNS) throw new IllegalArgumentException(
-                String.format("Argument 'int index = %d' is out of bounds.", index));
-        if (row == null) throw new IllegalArgumentException("Argument 'int[] row' is null.");
-        if (row.length != COLUMNS) throw new IllegalArgumentException(
-                String.format("Argument 'int[] row : row.length = %d' is not the correct length.", row.length));
-
-        for (int column = 0; column < COLUMNS; ++column) {
-            set_element(column, index, row[column]);
-        }
-    }
-
     @Override
     public boolean solve() {
         return solve(0, 0);
     }
 
     private boolean solve(int row, int col) {
-        if(legal(m_board) == false) return false;
+        if(!legal(m_board)) return false;
 
-        return solve(0, 0, m_board);
+        return solve(row, col, m_board);
     }
 
     private static boolean solve(int row, int col, int[][] matrix) {
@@ -96,9 +43,41 @@ public final class Sudoku implements SudokuSolver {
         return false;
     }
 
+    /**
+     * @param digit The digit to insert in square row, col
+     * @param row   The row
+     * @param col   The column
+     * @throws IllegalArgumentException if row, col or digit is outside the range
+     *                                  [0..9]
+     * @return True if the placement of digit at [row][col] is legal
+     */
     @Override
-    public boolean legal(int digit, int row, int col) {
+    public boolean legal(int digit, int row, int col) throws IllegalArgumentException {
+        if(!valid_args(digit, 0, row, col)) {
+            throw new IllegalArgumentException("An argument was out of bounds.");
+        }
+
         return legal_placement(row - 1, col - 1, digit, m_board);
+    }
+
+    private static boolean valid_args(int digit, int lDigitBound, int row, int col) {
+        if (col < 1 || col > COLUMNS) return false;
+        if (row < 1 || row > ROWS) return false;
+        return digit >= lDigitBound && digit <= 9;
+    }
+
+    private static boolean valid(int[][] matrix) {
+        if (matrix.length != ROWS) return false;
+        for (int i = 0; i < ROWS; ++i) {
+            if (matrix[i].length != COLUMNS) return false;
+            for (int j = 0; j < COLUMNS; ++j) {
+                if (!valid_args(matrix[i][j], 0, i + 1, j + 1)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     private static boolean legal_placement(int row, int col, int digit, int[][] matrix) {
@@ -130,7 +109,7 @@ public final class Sudoku implements SudokuSolver {
         for (int i = 0; i < ROWS; ++i) {
             if (matrix[i].length != COLUMNS) return false;
             for (int j = 0; j < COLUMNS; ++j) {
-                if (legal_placement(i, j, matrix[i][j], matrix) == false) {
+                if(!legal_placement(i, j, matrix[i][j], matrix)) {
                     return false;
                 }
             }
@@ -150,7 +129,11 @@ public final class Sudoku implements SudokuSolver {
      */
     @Override
     public void set(int row, int col, int digit) throws IllegalArgumentException {
-        set_element(row, col, digit);
+        if(!valid_args(digit, 0, row, col)) {
+            throw new IllegalArgumentException("An argument where out of bounds");
+        }
+
+        m_board[row - 1][col - 1] = digit;
     }
 
     /**
@@ -163,7 +146,7 @@ public final class Sudoku implements SudokuSolver {
      */
     @Override
     public void remove(int row, int col) throws IllegalArgumentException {
-        set_element(row, col, 0);
+        set(row, col, 0);
     }
 
     /**
@@ -183,7 +166,7 @@ public final class Sudoku implements SudokuSolver {
      */
     @Override
     public void setMatrix(int[][] matrix) throws IllegalArgumentException {
-        if (!legal(matrix)) throw new IllegalArgumentException("Argument 'int[][] matrix' is not legal");
+        if (!valid(matrix)) throw new IllegalArgumentException("Argument 'int[][] matrix' is not valid");
         m_board = matrix;
     }
 
